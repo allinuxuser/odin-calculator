@@ -18,6 +18,7 @@ let num1 = 0;
 let num2 = 0;
 let operator;
 let hasOperator = false;
+let hasResult = false;
 
 function operate(func, a, b) {
   return func(a, b)
@@ -77,19 +78,35 @@ for (let i = 1; i <= 1; i++) {
     digitBtn.id = `${i}`
     allDigitButtonContainer.appendChild(digitButtonContainer);
     digitButtonContainer.appendChild(digitBtn);
+
+    // Code for number buttons
     digitBtn.addEventListener("click", () => {
       document.getElementById("screen").value = document.getElementById("screen").value  + `${i}`;
+
+      // If operator button is pressed, assign to num2, else assign to num1
       if (hasOperator == true) {
         num2 = parseInt(document.getElementById("screen").value);
-      } else {
+      } else if (hasOperator == false) {
         num1 = parseInt(document.getElementById("screen").value);
       }
+      
+      // If a number button is pressed while result is shown, clear screen and display new number
+      if (hasResult) {
+        document.getElementById("screen").value = ''
+        document.getElementById("screen").value = document.getElementById("screen").value  + `${i}`;
+        num1 = parseInt(document.getElementById("screen").value);
+      }
+
     });
 
   }
 }
 
 addBtn.addEventListener("click", () => {
+  if (num1 > 0 && num2 > 0 && hasOperator == true) {
+    let result = operate(operator, num1, num2);
+    num1 = result;
+  }
   operator = add;
   hasOperator = true;
   document.getElementById("screen").value = ''
@@ -97,18 +114,30 @@ addBtn.addEventListener("click", () => {
 
 
 subtractBtn.addEventListener("click", () => {
+  if (num1 > 0 && num2 > 0 && hasOperator == true) {
+    let result = operate(operator, num1, num2);
+    num1 = result;
+  }
   operator = subtract;
   hasOperator = true;
   document.getElementById("screen").value = ''
 });
 
 multiplyBtn.addEventListener("click", () => {
+  if (num1 > 0 && num2 > 0 && hasOperator == true) {
+    let result = operate(operator, num1, num2);
+    num1 = result;
+  }
   operator = multiply;
   hasOperator = true;
   document.getElementById("screen").value = ''
 });
 
 divideBtn.addEventListener("click", () => {
+  if (num1 > 0 && num2 > 0 && hasOperator == true) {
+    let result = operate(operator, num1, num2);
+    num1 = result;
+  }
   operator = divide;
   hasOperator = true;
   document.getElementById("screen").value = ''
@@ -126,6 +155,7 @@ clearBtn.addEventListener("click", () => {
 equalsBtn.addEventListener("click", () => {
   let result = operate(operator, num1, num2);
   hasOperator = false;
+  hasResult = true;
   document.getElementById("screen").value = result;
-})
+});
 
