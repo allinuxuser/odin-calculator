@@ -94,7 +94,12 @@ for (let i = 1; i <= 1; i++) {
       if (hasResult) {
         document.getElementById("screen").value = ''
         document.getElementById("screen").value = document.getElementById("screen").value  + `${i}`;
+        if (hasOperator == true) {
+        num2 = parseInt(document.getElementById("screen").value);
+      } else if (hasOperator == false) {
         num1 = parseInt(document.getElementById("screen").value);
+      }
+
       }
 
     });
