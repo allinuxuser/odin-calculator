@@ -19,6 +19,7 @@ let num2 = 0;
 let operator;
 let hasOperator = false;
 let hasResult = false;
+alreadyCalculated = false;
 
 function operate(func, a, b) {
   return func(a, b)
@@ -81,6 +82,11 @@ for (let i = 1; i <= 1; i++) {
 
     // Code for number buttons
     digitBtn.addEventListener("click", () => {
+      if (alreadyCalculated == true) {
+        document.getElementById("screen").value = ''
+        alreadyCalculated = false;
+      }
+
       document.getElementById("screen").value = document.getElementById("screen").value  + `${i}`;
 
       // If operator button is pressed, assign to num2, else assign to num1
@@ -112,6 +118,7 @@ addBtn.addEventListener("click", () => {
     let result = operate(operator, num1, num2);
     num1 = result;
     document.getElementById("screen").value = num1;
+    alreadyCalculated = true;
   } else {
     document.getElementById("screen").value = ''
   }
@@ -125,6 +132,7 @@ subtractBtn.addEventListener("click", () => {
     let result = operate(operator, num1, num2);
     num1 = result;
     document.getElementById("screen").value = num1;
+    alreadyCalculated = true;
   } else {
     document.getElementById("screen").value = ''
   }
@@ -137,6 +145,7 @@ multiplyBtn.addEventListener("click", () => {
     let result = operate(operator, num1, num2);
     num1 = result;
     document.getElementById("screen").value = num1;
+    alreadyCalculated = true;
   } else {
     document.getElementById("screen").value = ''
   }
@@ -149,6 +158,7 @@ divideBtn.addEventListener("click", () => {
     let result = operate(operator, num1, num2);
     num1 = result;
     document.getElementById("screen").value = num1;
+    alreadyCalculated = true;
   } else {
     document.getElementById("screen").value = ''
   }
@@ -160,6 +170,7 @@ clearBtn.addEventListener("click", () => {
   num1 = 0;
   num2 = 0;
   hasOperator = false;
+  alreadyCalculated = false;
   document.getElementById("screen").value = ''
 })
 
@@ -172,6 +183,7 @@ equalsBtn.addEventListener("click", () => {
   }
   hasOperator = false;
   hasResult = true;
+  alreadyCalculated = false;
   document.getElementById("screen").value = result;
 });
 
