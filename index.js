@@ -167,6 +167,9 @@ clearBtn.addEventListener("click", () => {
 
 equalsBtn.addEventListener("click", () => {
   let result = operate(operator, num1, num2);
+  if (num1 == 0 && num2 == 0 && operator == divide) {
+    result = "Yeah nice try"
+  }
   hasOperator = false;
   hasResult = true;
   document.getElementById("screen").value = result;
