@@ -81,7 +81,6 @@ for (let i = 1; i <= 1; i++) {
 
     // Code for number buttons
     digitBtn.addEventListener("click", () => {
-      document.getElementById("screen").value = ''
       document.getElementById("screen").value = document.getElementById("screen").value  + `${i}`;
 
       // If operator button is pressed, assign to num2, else assign to num1
@@ -95,12 +94,12 @@ for (let i = 1; i <= 1; i++) {
       if (hasResult) {
         document.getElementById("screen").value = ''
         document.getElementById("screen").value = document.getElementById("screen").value  + `${i}`;
+        hasResult = false;
         if (hasOperator == true) {
-        num2 = parseInt(document.getElementById("screen").value);
-      } else if (hasOperator == false) {
-        num1 = parseInt(document.getElementById("screen").value);
-      }
-
+          num2 = parseInt(document.getElementById("screen").value);
+        } else if (hasOperator == false) {
+          num1 = parseInt(document.getElementById("screen").value);
+        }
       }
 
     });
