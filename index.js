@@ -117,7 +117,6 @@ addBtn.addEventListener("click", () => {
   }
   operator = add;
   hasOperator = true;
-  
 });
 
 
@@ -125,30 +124,36 @@ subtractBtn.addEventListener("click", () => {
   if (num1 > 0 && num2 > 0 && hasOperator == true) {
     let result = operate(operator, num1, num2);
     num1 = result;
+    document.getElementById("screen").value = num1;
+  } else {
+    document.getElementById("screen").value = ''
   }
   operator = subtract;
   hasOperator = true;
-  document.getElementById("screen").value = ''
 });
 
 multiplyBtn.addEventListener("click", () => {
   if (num1 > 0 && num2 > 0 && hasOperator == true) {
     let result = operate(operator, num1, num2);
     num1 = result;
+    document.getElementById("screen").value = num1;
+  } else {
+    document.getElementById("screen").value = ''
   }
   operator = multiply;
   hasOperator = true;
-  document.getElementById("screen").value = ''
 });
 
 divideBtn.addEventListener("click", () => {
   if (num1 > 0 && num2 > 0 && hasOperator == true) {
     let result = operate(operator, num1, num2);
     num1 = result;
+    document.getElementById("screen").value = num1;
+  } else {
+    document.getElementById("screen").value = ''
   }
   operator = divide;
   hasOperator = true;
-  document.getElementById("screen").value = ''
 });
 
 clearBtn.addEventListener("click", () => {
